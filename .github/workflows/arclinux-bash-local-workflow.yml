@@ -1,4 +1,4 @@
-name: "archlinux ansible local CI workflow"
+name: "archlinux bash local CI workflow"
 
 
 on:
@@ -28,19 +28,28 @@ jobs:
         sudo apt-get install -y neofetch && neofetch   
     - name: "docker pull archlinux"
       run: sudo docker pull ${distribution}:${version}  && sudo docker image ls  
-    - name: "docker build archlinux"
+    - name: "docker build archlinux base"
       run: |
         # destroyed afterwards (use --rm )
         # all subsequent Dockerfile commands generate new images and the cache is not used
-        sudo docker build --no-cache --rm  -t archlinux:ansible . --file dockerfiles/Dockerfile.archlinux 
+        sudo docker build --no-cache --rm  -t archlinux:base . --file dockerfiles/Dockerfile.archlinux 
         docker image ls
-        docker image history archlinux:ansible
+        docker image history archlinux:base
         docker system df -v               
-        docker image inspect archlinux:ansible
+        docker image inspect archlinux:base
         # sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --syntax-check -i ./localhost # no need localhost inventory
-        sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --syntax-check
-        sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --check #dry-run
-        sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml
+        # sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --syntax-check
+        # sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --check #dry-run
+        # sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml
+    - name: "docker build archlinux network security"
+      run: |
+        # destroyed afterwards (use --rm )
+        # all subsequent Dockerfile commands generate new images and the cache is not used
+        sudo docker build --no-cache --rm  -t archlinux:netsec . --file dockerfiles/Dockerfile.networksecurity 
+        docker image ls
+        docker image history archlinux:base
+        docker system df -v               
+        docker image inspect archlinux:base        
     # - name: "run docker ansible local playbook archlinux"
     #   run: sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --syntax-check -i ./localhost         
     # - name: "deploy nxlog"
