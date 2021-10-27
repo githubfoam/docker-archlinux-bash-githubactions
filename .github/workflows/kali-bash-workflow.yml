@@ -58,10 +58,10 @@ jobs:
         docker run --name toolkali kali:netsec hping3 -v
         docker run --name toolkali kali:netsec "hping3 --traceroute -v -1 www.wisetut.com"
         docker container ls -a
-        docker container stop toolkali
-        docker container ls -a
-        docker run -d --name toolkali kali:netsec watch "date >> /var/log/date.log"
-        docker container ls -a
+        # docker container stop toolkali
+        # docker container ls -a
+        # docker run -d --name toolkali kali:netsec watch "date >> /var/log/date.log"
+        # docker container ls -a
     # - name: "run docker ansible local playbook archlinux"
     #   run: sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --syntax-check -i ./localhost         
     # - name: "deploy nxlog"
