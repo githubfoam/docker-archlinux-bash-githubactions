@@ -49,7 +49,11 @@ jobs:
         docker image ls
         docker image history kali:netsec
         docker system df -v               
-        docker image inspect kali:netsec      
+        docker image inspect kali:netsec  
+        docker container run --name toolkali kali:netsec
+        docker container ls -a
+        docker container exec -ti toolkali "hping3 -v"
+
     # - name: "run docker ansible local playbook archlinux"
     #   run: sudo docker run -e ANSIBLE_FORCE_COLOR=1 --privileged --volume="${PWD}":/home/ansible:ro ${name} ansible-playbook -vvv /home/ansible/playbook.yml --syntax-check -i ./localhost         
     # - name: "deploy nxlog"
