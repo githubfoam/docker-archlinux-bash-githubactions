@@ -1,4 +1,4 @@
-name: "ubuntu bash local CI workflow"
+name: "fedora bash local CI workflow"
 
 
 on:
