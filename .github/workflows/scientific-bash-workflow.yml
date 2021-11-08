@@ -44,7 +44,7 @@ jobs:
     #     docker run -it scientificlinux/sl:7 cat /etc/redhat-release
     - name: "docker build scientificlinux systemd base"
       run: |
-        docker build --rm -t local/mycontainer /tmp
+        docker build --rm -t local/mycontainer --file dockerfiles/${dockerfilename} 
         # build and run this example (with apache)
         docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
     # - name: "docker build fedora snort"
