@@ -4,6 +4,6 @@ FROM scientificlinux/sl:latest
 LABEL org.opencontainers.image.authors="githubfoam"
 
 
-RUN dnf update -y
+RUN yum update -y && yum clean all
 
 WORKDIR /tmp
