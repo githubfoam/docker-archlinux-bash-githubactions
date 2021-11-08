@@ -9,12 +9,12 @@ on:
 jobs:
 
   ubuntu-latest-job:
-    name: "docker blackarch ubuntu latest"
+    name: "docker forensics ubuntu latest"
     runs-on: ubuntu-latest
     env:
       distribution: "archlinux" #https://hub.docker.com/_/archlinux
       version: "latest"
-      name: "archlinux:blackarch"
+      name: "archlinux/blackarch"
       dockerfilename: "Dockerfile.archlinux.blackarch"
     steps:
     - uses: actions/checkout@v2
@@ -27,8 +27,11 @@ jobs:
         cat /etc/issue
         cat /etc/os-release
         sudo apt-get install -y neofetch && neofetch   
-    - name: "docker pull archlinux"
-      run: sudo docker pull ${distribution}:${version}  && sudo docker image ls  
+    - name: "docker pull archlinux container-diff"
+      run: |
+        sudo docker pull ${distribution}/${version}
+        docker image ls  
+        pacman -S container-diff
     - name: "docker build archlinux base"
       run: |
         # destroyed afterwards (use --rm )
@@ -38,6 +41,14 @@ jobs:
         docker image history ${name}/${version} 
         docker system df -v               
         docker image inspect ${name}/${version} 
+    - name: "docker build archlinux base"
+      run: |
+        # destroyed afterwards (use --rm )
+        # all subsequent Dockerfile commands generate new images and the cache is not used
+        sudo docker build --no-cache --rm  -t ${name}/${version} . --file dockerfiles/${dockerfilename} 
+        curl -LO https://storage.googleapis.com/container-diff/latest/container-diff-linux-amd64
+        install container-diff-linux-amd64 /usr/local/bin/container-diff
+        container-diff analyze ${name}/${version}
 
   # ubuntu-latest-job:
   #   name: "docker archlinux ubuntu latest"
