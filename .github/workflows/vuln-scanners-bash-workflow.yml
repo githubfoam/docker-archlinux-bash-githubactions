@@ -30,7 +30,7 @@ jobs:
         grep "localhost" scripts/dvwa.w3af
         sed 's%localhost%dvwa.co.uk%g' scripts/dvwa.w3af
         grep "dvwa.co.uk" scripts/dvwa.w3af
-        ./w3af_console -s scripts/dvwa.w3af
+        # ./w3af_console -s scripts/dvwa.w3af
 
   ubuntu-latest-wapiti-job:
     name: "wapiti ubuntu latest"
