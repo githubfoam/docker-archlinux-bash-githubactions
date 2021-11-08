@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  ubuntu-latest-job:
+  ubuntu-latest-blackarch-job:
     name: "docker blackarch ubuntu latest"
     runs-on: ubuntu-latest
     env:
