@@ -1,4 +1,4 @@
-name: "docker vuln scanners CI workflow"
+name: "vuln scanners CI workflow"
 
 
 on:
@@ -28,7 +28,7 @@ jobs:
     - name: "Installing Wapiti using a virtual environment"
       run: |
         python -m venv wapiti3
-        ./wapiti3/bin/activate
+        sudo ./wapiti3/bin/activate
         git clone https://github.com/wapiti-scanner/wapiti.git
         python3 setup.py install
         # https://github.com/OWASP/OWASP-VWAD/blob/master/src/data/online.json
