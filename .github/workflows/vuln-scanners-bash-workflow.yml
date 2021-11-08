@@ -28,7 +28,8 @@ jobs:
     - name: "Installing Wapiti using a virtual environment"
       run: |
         python -m venv wapiti3
-        sudo ./wapiti3/bin/activate
+        # ./wapiti3/bin/activate #Permission denied 
+        source ~wapiti3/bin/activate
         git clone https://github.com/wapiti-scanner/wapiti.git
         python3 setup.py install
         # https://github.com/OWASP/OWASP-VWAD/blob/master/src/data/online.json
