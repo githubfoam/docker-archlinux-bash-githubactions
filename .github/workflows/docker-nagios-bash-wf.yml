@@ -44,7 +44,7 @@ jobs:
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
         trivy image ${name}/${version}
 
-  ubuntu-latest-job:
+  ubuntu-latest-apt-job:
     name: "docker nagios images  ubuntu latest"
     runs-on: ubuntu-latest
     env:
