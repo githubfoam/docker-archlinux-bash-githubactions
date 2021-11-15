@@ -154,7 +154,9 @@ RUN mkdir -p /tmp/nrpe                                                     && \
 
 # ---- nagios auth
 
-COPY --from=htpasswd /opt/htpasswd.users ${NAGIOS_HOME}/etc/htpasswd.users
+# invalid from flag value htpasswd: pull access denied for htpasswd, repository does not exist or may require 'docker login': denied:
+# COPY --from=htpasswd /opt/htpasswd.users ${NAGIOS_HOME}/etc/htpasswd.users
+COPY sh -c "--from=htpasswd /opt/htpasswd.users ${NAGIOS_HOME}/etc/htpasswd.users"
 RUN chown ${NAGIOS_USER}:${NAGIOS_GROUP} ${NAGIOS_HOME}/etc/htpasswd.users
 
 # ---- apache2
