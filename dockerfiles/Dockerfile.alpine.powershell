@@ -7,4 +7,6 @@ WORKDIR /tmp
 
 SHELL ["pwsh", "-Command"]
 
+RUN Install-Module -Name Polaris -Force
+
 
