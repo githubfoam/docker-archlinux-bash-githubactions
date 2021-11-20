@@ -1,2 +1,2 @@
 # docker-archlinux-bash-githubactions
-dockerfile archlinux 
+[![archlinux CI workflow](https://github.com/githubfoam/docker-archlinux-bash-githubactions/actions/workflows/arclinux-wf.yml/badge.svg?branch=main)](https://github.com/githubfoam/docker-archlinux-bash-githubactions/actions/workflows/arclinux-wf.yml)
