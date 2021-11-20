@@ -1,8 +1,8 @@
 Import-Module Polaris
 
 $data = @(
-    @{Id="1";Name="Jamie"}
-    @{Id="2";Name="Chuck"}
+    @{Id="1";Name="Batman"}
+    @{Id="2";Name="Robin"}
    )
 
 New-PolarisRoute -Path "/api/people" -Method GET -Scriptblock {
