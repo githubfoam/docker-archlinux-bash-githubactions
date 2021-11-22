@@ -1,7 +1,0 @@
-# https://hub.docker.com/_/alpine
-# https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2
-FROM amd64/alpine
-
-WORKDIR /tmp
-
-
