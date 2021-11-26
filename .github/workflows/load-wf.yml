@@ -14,7 +14,7 @@ jobs:
       distribution: "archlinux" #https://hub.docker.com/_/archlinux
       version: "latest"
       name: "archlinux/base"
-      dockerfilename: "Dockerfile.archlinux"      
+      dockerfilename: "Dockerfile.archlinux.load"      
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
