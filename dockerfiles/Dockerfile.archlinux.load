@@ -2,7 +2,7 @@ FROM archlinux:base
 LABEL org.opencontainers.image.authors="githubfoam"
 
 RUN pacman -Syu --noconfirm && \
-    pacman -S stress --noconfirm
+    pacman -S stress stress-ng --noconfirm
 
 RUN uptime && \
     #  spawn 6 workers spinning on sqrt() with a timeout of 20 seconds
