@@ -45,7 +45,12 @@ jobs:
         # check that your server is running the 64-bit version of Ubuntu 18.04.
         uname -m
         # check that your server supports IPV6
-        ip addr | grep inet6
+        # inet6 ::1/128 scope host
+        ip addr | grep inet6 
+        # check that your server is running Linux kernel 4.x
+        uname -r
+        # check that your server has (at least) 8 CPU cores
+        grep -c ^processor /proc/cpuinfo
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
