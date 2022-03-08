@@ -53,8 +53,10 @@ jobs:
         grep -c ^processor /proc/cpuinfo
         echo $(hostname)
         cat /etc/hostname
-        wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          sudo bash -s -- -v bionic-240 -s $(hostname) -e notice@$(hostname)  -a -w
+        dpkg -l | grep apache*
+        sudo apt-get --purge remove apache2-bin
+        # wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
+        #   sudo bash -s -- -v bionic-240 -s $(hostname) -e notice@$(hostname)  -a -w
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
