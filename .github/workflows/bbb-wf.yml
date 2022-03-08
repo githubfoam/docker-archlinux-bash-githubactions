@@ -51,8 +51,10 @@ jobs:
         uname -r
         # check that your server has (at least) 8 CPU cores
         grep -c ^processor /proc/cpuinfo
-        wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          bash -s -- -v bionic-240 -s bbb.example.com -e notice@example.com  -a -w
+        echo $(hostname)
+        cat /etc/hostname
+        # wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
+        #   bash -s -- -v bionic-240 -s bbb.example.com -e notice@example.com  -a -w
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
