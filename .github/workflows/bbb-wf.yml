@@ -31,9 +31,10 @@ jobs:
         # https://docs.bigbluebutton.org/2.4/install.html#minimum-server-requirements
         #check that the locale of the server is en_US.UTF-8
         cat /etc/default/locale
-        apt-get install -y language-pack-en
-        update-locale LANG=en_US.UTF-8
+        sudo apt-get install -y language-pack-en
+        sudo update-locale LANG=en_US.UTF-8
         cat /etc/default/locale
+        systemctl show-environment
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
