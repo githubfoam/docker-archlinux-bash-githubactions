@@ -26,7 +26,12 @@ jobs:
         cat /etc/issue
         cat /etc/os-release
         sudo apt-get install -y neofetch && neofetch   
-    - name: "bbb "
+    - name: "Pre-installation checks"
       run: |
-        wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          bash -s -- -w -a -v bionic-24 -s bbb.example.com -e info@example.com
+        # https://docs.bigbluebutton.org/2.4/install.html#minimum-server-requirements
+        #check that the locale of the server is en_US.UTF-8
+        cat /etc/default/locale
+    # - name: "bbb "
+    #   run: |
+    #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
+    #       bash -s -- -w -a -v bionic-24 -s bbb.example.com -e info@example.com
