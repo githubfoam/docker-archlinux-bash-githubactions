@@ -35,6 +35,11 @@ jobs:
         sudo update-locale LANG=en_US.UTF-8
         cat /etc/default/locale
         systemctl show-environment
+        sudo systemctl set-environment LANG=en_US.UTF-8
+        cat /etc/default/locale
+        systemctl show-environment
+        #check that your server has (at lest) 16G of memory
+        free -h
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
