@@ -54,8 +54,12 @@ jobs:
         echo $(hostname)
         dpkg -l | grep apache*
         sudo apt-get --purge remove apache2-bin
-        wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          sudo bash -s -- -v bionic-240 -s $(hostname).com -e notice@$(hostname).com  -a -w
+        echo "172.28.128.15 $(hostname).local $(hostname)" |sudo tee -a /etc/hosts
+        echo "nameserver 8.8.8.8" |sudo tee -a /etc/resolv.conf
+        cat /etc/hosts
+        cat /etc/resolv.conf
+        # wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
+        #   sudo bash -s -- -v bionic-240 -s $(hostname).com -e notice@$(hostname).com  -a -w
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
