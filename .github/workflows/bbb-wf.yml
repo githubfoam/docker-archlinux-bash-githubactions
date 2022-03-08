@@ -55,7 +55,7 @@ jobs:
         dpkg -l | grep apache*
         sudo apt-get --purge remove apache2-bin
         wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          sudo bash -s -- -v bionic-240 -s $(hostname) -e notice@$(hostname).com  -a -w
+          sudo bash -s -- -v bionic-240 -s $(hostname).com -e notice@$(hostname).com  -a -w
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
