@@ -54,7 +54,7 @@ jobs:
         echo $(hostname)
         cat /etc/hostname
         wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          bash -s -- -v bionic-240 -s $(hostname) -e notice@$(hostname)  -a -w
+          sudo bash -s -- -v bionic-240 -s $(hostname) -e notice@$(hostname)  -a -w
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
