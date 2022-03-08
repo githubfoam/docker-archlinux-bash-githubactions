@@ -40,6 +40,12 @@ jobs:
         systemctl show-environment
         #check that your server has (at lest) 16G of memory
         free -h
+        # check that the server has Ubuntu is 18.04 as its operating system
+        cat /etc/lsb-release
+        # check that your server is running the 64-bit version of Ubuntu 18.04.
+        uname -m
+        # check that your server supports IPV6
+        ip addr | grep inet6
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
