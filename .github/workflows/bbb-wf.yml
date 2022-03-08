@@ -59,8 +59,9 @@ jobs:
         echo "nameserver 8.8.8.8" |sudo tee -a /etc/resolv.conf
         cat /etc/hosts
         cat /etc/resolv.conf
-        wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
-          sudo bash -s -- -v bionic-240 -s $(hostname).com -e notice@$(hostname).com  -a -w
+        wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | sudo bash -s -- -v xenial-200
+        # wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
+        #   sudo bash -s -- -v bionic-240 -s $(hostname).com -e notice@$(hostname).com  -a -w
     # - name: "bbb "
     #   run: |
     #     wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | \
