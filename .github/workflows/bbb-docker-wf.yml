@@ -10,11 +10,11 @@ jobs:
   bbb-ubuntu-1804-job:
     name: "bbb  archlinux ubuntu 18.04"
     runs-on: ubuntu-18.04
-    env:
-      distribution: "archlinux" #https://hub.docker.com/_/archlinux
-      version: "latest"
-      name: "archlinux/base"
-      dockerfilename: "Dockerfile.archlinux"      
+    # env:
+    #   distribution: "archlinux" #https://hub.docker.com/_/archlinux
+    #   version: "latest"
+    #   name: "archlinux/base"
+    #   dockerfilename: "Dockerfile.archlinux"      
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
@@ -28,12 +28,13 @@ jobs:
         sudo apt-get install -y neofetch && neofetch   
     - name: "BigBlueButton 2.4 Docker"
       run: |
+        set -xe
         # https://github.com/bigbluebutton/docker
         git clone -b main --recurse-submodules https://github.com/bigbluebutton/docker.git bbb-docker
         cd bbb-docker
         git submodule update --init
         ./scripts/setup
         #Start containers 
-        docker-compose up -d
+        # docker-compose up -d
         # If you use greenlight, you can create an admin account with
-        docker-compose exec greenlight bundle exec rake admin:create
+        # docker-compose exec greenlight bundle exec rake admin:create
