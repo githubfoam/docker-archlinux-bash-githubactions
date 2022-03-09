@@ -1,0 +1,34 @@
+name: "BigBlueButton 2.4 Docker CI workflow"
+
+
+on:
+  push:
+    branches: [ test ]
+
+
+jobs:
+  bbb-ubuntu-1804-job:
+    name: "bbb  archlinux ubuntu 18.04"
+    runs-on: ubuntu-18.04
+    env:
+      distribution: "archlinux" #https://hub.docker.com/_/archlinux
+      version: "latest"
+      name: "archlinux/base"
+      dockerfilename: "Dockerfile.archlinux"      
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: |
+        hostnamectl status
+        lsb_release -a
+        lsb_release -d
+        cat /etc/lsb-release
+        cat /etc/issue
+        cat /etc/os-release
+        sudo apt-get install -y neofetch && neofetch   
+    - name: "BigBlueButton 2.4 Docker"
+      run: |
+        # https://github.com/bigbluebutton/docker
+        git clone -b main --recurse-submodules https://github.com/bigbluebutton/docker.git bbb-docker
+        cd bbb-docker
+        git submodule update --init
