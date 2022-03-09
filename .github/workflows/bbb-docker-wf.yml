@@ -33,8 +33,10 @@ jobs:
         git clone -b main --recurse-submodules https://github.com/bigbluebutton/docker.git bbb-docker
         cd bbb-docker
         git submodule update --init
-        sudo ./scripts/setup
+        ls -lai
+        # sudo ./scripts/setup
         #Start containers 
+        # sudo usermod -aG docker `whoami`
         # docker-compose up -d
         # If you use greenlight, you can create an admin account with
         # docker-compose exec greenlight bundle exec rake admin:create
