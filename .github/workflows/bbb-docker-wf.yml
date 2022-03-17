@@ -34,7 +34,7 @@ jobs:
         cd bbb-docker
         git submodule update --init
         ls -lai
-        # sudo ./scripts/setup
+        sudo ./scripts/setup
         #Start containers 
         # sudo usermod -aG docker `whoami`
         # docker-compose up -d
