@@ -55,3 +55,18 @@ jobs:
         ls -lai
         # cp sample.env .env
         # docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
+    - name: "Prometheus exporter for BigBlueButton"
+      run: |
+        set -xe
+        # https://github.com/greenstatic/bigbluebutton-exporter
+        docker-compose --version
+        git clone https://github.com/greenstatic/bigbluebutton-exporter.git
+        make docker   
+    - name: "Big Blue button monitoring docker"
+      run: |
+        set -xe
+        # https://github.com/ZeitounCorp/bigbluebutton_monitoring
+        docker-compose --version
+        git clone https://github.com/ZeitounCorp/bigbluebutton_monitoring.git
+        cd ~/bigbluebutton_monitoring/bbb-exporter/
+        # sudo bbb-conf --secret
