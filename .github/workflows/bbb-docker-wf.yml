@@ -40,3 +40,18 @@ jobs:
         # docker-compose up -d
         # If you use greenlight, you can create an admin account with
         # docker-compose exec greenlight bundle exec rake admin:create
+    - name: "Greenlight Docker"
+      run: |
+        set -xe
+        # https://docs.bigbluebutton.org/greenlight/gl-customize.html#customizing-greenlight
+        # https://github.com/bigbluebutton/greenlight
+        git https://github.com/bigbluebutton/greenlight.git && cd greenlight
+        git status
+        git remote add upstream https://github.com/bigbluebutton/greenlight.git
+        git remote -v
+        git fetch upstream
+        git checkout -b custom-changes upstream/v2
+        git status
+        ls -lai
+        # cp sample.env .env
+        # docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
